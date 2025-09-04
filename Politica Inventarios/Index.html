@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Infografía Interactiva - Políticas de Inventarios</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7fa;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      background: #1a3c6e;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
+    }
+    header p {
+      margin: 10px 0 0;
+      font-size: 1em;
+      opacity: 0.9;
+    }
+    .intro {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+    .instructions {
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: #0d47a1;
+      border: 1px solid #bbdefb;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .tab {
+      padding: 12px 20px;
+      background: #d0d9ef;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s;
+      flex: 1;
+      min-width: 120px;
+      text-align: center;
+    }
+    .tab:hover {
+      background: #b8c6e0;
+    }
+    .tab.active {
+      background: #1a3c6e;
+      color: white;
+    }
+    .tab-content {
+      display: none;
+      padding: 25px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-top: 10px;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .process-card {
+      background: #f9fafa;
+      border-left: 5px solid #1a3c6e;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .process-card h3 {
+      margin-top: 0;
+      color: #1a3c6e;
+    }
+    .highlight-box {
+      background: #fff8e6;
+      border: 2px solid #ffc107;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .highlight-box h2 {
+      color: #d49000;
+      margin-top: 0;
+    }
+    .highlight-box ul {
+      text-align: left;
+      margin: 15px 0;
+    }
+    .highlight-box li {
+      margin: 10px 0;
+    }
+    .obligation-strong {
+      background-color: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 12px 15px;
+      margin: 15px 0;
+      font-weight: bold;
+      color: #856404;
+      border-radius: 4px;
+    }
+    .glossary-container, .faq-container {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 20px 0;
+    }
+    .glossary-item, .faq-item {
+      margin-bottom: 15px;
+    }
+    .glossary-term, .faq-question {
+      font-weight: bold;
+      color: #1a3c6e;
+    }
+    .faq-answer {
+      margin-top: 5px;
+      padding-left: 10px;
+      border-left: 3px solid #d0d9ef;
+    }
+    .note {
+      font-size: 0.9em;
+      color: #555;
+      font-style: italic;
+      margin-top: 20px;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 15px;
+      background: #1a3c6e;
+      color: white;
+      border-radius: 8px;
+      font-size: 0.9em;
+    }
+    .source-credit {
+      font-size: 0.9em;
+      color: #555;
+      text-align: center;
+      margin: 15px 0;
+      font-style: italic;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 6px;
+    }
+    @media (max-width: 768px) {
+      .tab {
+        min-width: auto;
+        font-size: 0.9em;
+        padding: 10px 14px;
+      }
+      .container {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Políticas Internas de la Unidad de Inventarios</h1>
+      <p>Secretaría de Finanzas del Estado de Guanajuato</p>
+    </header>
+
+    <div class="intro">
+      <p>
+        Esta infografía interactiva explica de forma clara y sencilla los procesos clave para el manejo de bienes muebles del Gobierno del Estado. 
+        Está diseñada para personas sin conocimientos técnicos, destacando las responsabilidades de los <strong>resguardantes</strong> 
+        y los pasos a seguir en cada situación: alta, resguardo, inventario, baja, reasignación y siniestros.
+      </p>
+    </div>
+
+    <div class="instructions">
+      🔍 <strong>Instrucciones:</strong> Haz clic en las pestañas superiores (Alta de Bienes, Resguardo, etc.) para navegar por los temas. 
+      Explora cada sección para conocer los procesos, obligaciones y normas clave.
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="openTab(event, 'alta')">Alta de Bienes</button>
+      <button class="tab" onclick="openTab(event, 'resguardo')">Resguardo</button>
+      <button class="tab" onclick="openTab(event, 'inventario')">Inventario Físico</button>
+      <button class="tab" onclick="openTab(event, 'baja')">Baja de Bienes</button>
+      <button class="tab" onclick="openTab(event, 'reasignacion')">Reasignación</button>
+      <button class="tab" onclick="openTab(event, 'siniestro')">Siniestros</button>
+      <button class="tab" onclick="openTab(event, 'glosario')">Glosario</button>
+      <button class="tab" onclick="openTab(event, 'faq')">Preguntas Frecuentes</button>
+    </div>
+
+    <!-- Alta de Bienes -->
+    <div id="alta" class="tab-content active">
+      <h2>Alta o Registro de Bienes</h2>
+      <p>Es el proceso inicial para dar de alta un bien nuevo en el sistema.</p>
+      <div class="process-card">
+        <h3>¿Cuándo se registra un bien?</h3>
+        <ul>
+          <li>Si su costo es igual o mayor a 35 días del salario mínimo vigente.</li>
+          <li>Si es un bien del capítulo 5000 del Clasificador de Gasto, aunque no esté etiquetado.</li>
+        </ul>
+      </div>
+      <div class="process-card">
+        <h3>¿Dónde se registra?</h3>
+        <p>En el sistema <strong>SIDGA</strong> (Sistema de Información de la Dirección General de Administración).</p>
+      </div>
+      <div class="process-card">
+        <h3>¿Qué se necesita?</h3>
+        <p>El <strong>Resguardo Individual de Mobiliario y Equipo</strong>, firmado por el servidor público que lo usará.</p>
+      </div>
+    </div>
+
+    <!-- Resguardo -->
+    <div id="resguardo" class="tab-content">
+      <h2>Asignación y Resguardo de Bienes</h2>
+      <p>Cada bien debe estar asignado a una persona responsable: el <strong>resguardante</strong>.</p>
+      <div class="process-card">
+        <h3>Plazos importantes</h3>
+        <ul>
+          <li><strong>5 días hábiles</strong>: Para asignar un bien nuevo al resguardante.</li>
+          <li><strong>5 días hábiles</strong>: Para reasignar bienes tras una baja, jubilación o cambio de personal.</li>
+        </ul>
+      </div>
+      <div class="process-card">
+        <h3>Documentos</h3>
+        <p>El <strong>Resguardo Individual</strong> debe estar firmado, actualizado y cargado en SIDGA.</p>
+      </div>
+      <div class="process-card">
+        <h3>Responsabilidades del Resguardante</h3>
+        <ul>
+          <li>Verificar y firmar su resguardo.</li>
+          <li>Reportar cambios físicos de los bienes.</li>
+          <li>Informar si las etiquetas patrimoniales están dañadas o faltan.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Inventario Físico -->
+    <div id="inventario" class="tab-content">
+      <h2>Levantamiento Físico de Inventario</h2>
+      <p>Es una revisión presencial para verificar que los bienes existan y estén en buen estado.</p>
+      <div class="process-card">
+        <h3>¿Qué debe hacer la Unidad?</h3>
+        <ul>
+          <li>Brindar espacio, internet y equipo de cómputo al verificador.</li>
+          <li>Poner a la vista todos los bienes, incluso los guardados.</li>
+        </ul>
+      </div>
+      <div class="process-card">
+        <h3>¿Qué pasa si no se localiza un bien?</h3>
+        <p>El resguardante tiene <strong>5 días</strong> para presentarlo. Si no lo hace, se considera omisión y puede derivar en reposición del bien.</p>
+      </div>
+      <div class="process-card">
+        <h3>Verificación</h3>
+        <p>El verificador levanta un acta y puede solicitar información sobre el estado de los bienes.</p>
+      </div>
+    </div>
+
+    <!-- Baja de Bienes -->
+    <div id="baja" class="tab-content">
+      <h2>Baja de Bienes</h2>
+      <p>Es el proceso para dar de baja un bien que ya no sirve o está obsoleto.</p>
+      <div class="process-card">
+        <h3>Para bienes del capítulo 5000</h3>
+        <p>Se sigue el proceso de la <strong>Dirección de Control Patrimonial</strong>.</p>
+      </div>
+      <div class="process-card">
+        <h3>Para otros bienes</h3>
+        <ul>
+          <li>Se depositan en un tiradero autorizado (respetando normas ambientales).</li>
+          <li>Se levanta un <strong>acta de hechos</strong> con fotos y soporte.</li>
+          <li>La Unidad Responsable debe solicitar la baja en SIDGA por correo.</li>
+        </ul>
+      </div>
+      <div class="process-card">
+        <h3>Importante</h3>
+        <p>Si el bien aún está en buen estado, debe ofrecerse a la DGA antes de darlo de baja.</p>
+      </div>
+    </div>
+
+    <!-- Reasignación -->
+    <div id="reasignacion" class="tab-content">
+      <h2>Reasignación de Bienes</h2>
+      <p>Mover bienes entre áreas requiere trámites formales.</p>
+      <div class="process-card">
+        <h3>Prohibido</h3>
+        <p>No se permite el intercambio directo entre áreas sin trámite.</p>
+      </div>
+      <div class="process-card">
+        <h3>Proceso correcto</h3>
+        <ul>
+          <li>Enviar oficio por <strong>firma electrónica</strong> a la DGA.</li>
+          <li>Adjuntar recibo firmado por quien entrega y quien recibe.</li>
+        </ul>
+      </div>
+      <div class="process-card">
+        <h3>Equipos informáticos</h3>
+        <p>La DGTIT debe reportar sustituciones a la DGA para actualizar SIDGA.</p>
+      </div>
+    </div>
+
+    <!-- Siniestros -->
+    <div id="siniestro" class="tab-content">
+      <h2>Siniestros (Robo, Incendio, Accidente)</h2>
+      <p>Si un bien sufre daño o se pierde, hay pasos urgentes que seguir.</p>
+      <div class="process-card">
+        <h3>Pasos a seguir</h3>
+        <ol>
+          <li>Notificar por <strong>correo</strong> a la DGA con el número de activo.</li>
+          <li>Reportar por <strong>teléfono</strong> a la aseguradora.</li>
+          <li>Levantar un <strong>acta de hechos</strong> detallada (cuándo, cómo, dónde, qué pasó).</li>
+        </ol>
+      </div>
+      <div class="process-card">
+        <h3>Responsabilidades</h3>
+        <p>El usuario del bien debe ayudar a su área a integrar el expediente del reclamo.</p>
+      </div>
+      <div class="process-card">
+        <h3>¿Y si hubo negligencia?</h3>
+        <p>Si se determina que fue por descuido, el resguardante podría pagar el <strong>deducible</strong> (en 10 días hábiles).</p>
+      </div>
+      <div class="process-card">
+        <h3>Advertencia importante</h3>
+        <p>NO se deben dejar bienes del gobierno (como laptops o cámaras) en vehículos. Si ocurre un siniestro, el resguardante pagará el deducible.</p>
+      </div>
+    </div>
+
+    <!-- Glosario -->
+    <div id="glosario" class="tab-content">
+      <h2>Glosario de Términos</h2>
+      <div class="glossary-container">
+        <div class="glossary-item">
+          <div class="glossary-term">SIDGA</div>
+          <div>Sistema de Información de la Dirección General de Administración. Plataforma para registrar y controlar los bienes del gobierno.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Resguardo Individual</div>
+          <div>Documento que asigna un bien a un servidor público, quien se hace responsable de su cuidado.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Resguardante</div>
+          <div>Persona responsable del uso, conservación y reporte de un bien del gobierno.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Acta de Hechos</div>
+          <div>Documento oficial que describe detalladamente un evento como robo, pérdida o daño de un bien.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Baja de Bienes</div>
+          <div>Proceso para retirar del inventario un bien que ya no es útil o funcional.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Siniestro</div>
+          <div>Evento inesperado que causa daño o pérdida de bienes muebles (robo, incendio, accidente, etc.).</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Firma Electrónica (FE)</div>
+          <div>Equivalente legal a la firma autógrafa, utilizada para documentos oficiales en formato digital.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Bienes Muebles</div>
+          <div>Objetos tangibles propiedad del Gobierno del Estado que pueden trasladarse sin menoscabo, como mobiliario, equipo de cómputo, etc.</div>
+        </div>
+        <div class="glossary-item">
+          <div class="glossary-term">Clasificador por Objeto del Gasto</div>
+          <div>Herramienta que clasifica los gastos públicos según su naturaleza y destino.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preguntas Frecuentes -->
+    <div id="faq" class="tab-content">
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">¿Qué hago si cambio de área o dejo mi puesto?</div>
+          <div class="faq-answer">Debes entregar los bienes a tu área administrativa y firmar el recibo de entrega. Tu resguardo debe actualizarse inmediatamente.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Qué pasa si pierdo un bien a mi cargo?</div>
+          <div class="faq-answer">Debes reportarlo inmediatamente. Si no se localiza en 5 días, podrías ser responsable de reponerlo.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Puedo prestar un bien del gobierno a un compañero?</div>
+          <div class="faq-answer">No. Cualquier cambio de resguardante debe hacerse mediante trámite oficial y actualización en SIDGA.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Qué hago si el bien se daña?</div>
+          <div class="faq-answer">Reporta inmediatamente a tu área administrativa y ayuda a levantar el acta de hechos. Si fue por negligencia, podrías pagar el deducible.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Por qué es importante el resguardo?</div>
+          <div class="faq-answer">Porque define quién es responsable de cada bien. Sin resguardo, no hay claridad sobre quién debe cuidarlo o responder por él.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Qué es el número de activo?</div>
+          <div class="faq-answer">Es un código único que identifica cada bien del gobierno. Debe estar visible en una etiqueta y registrarse en SIDGA.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Qué significa "activo disponible" en SIDGA?</div>
+          <div class="faq-answer">Indica que el bien está registrado pero aún no asignado a un resguardante. Debe asignarse en un plazo de 5 días hábiles.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resaltado de Obligaciones -->
+    <div class="highlight-box">
+      <h2>🔍 Obligaciones del Resguardante</h2>
+      <p>Si tienes un bien del gobierno a tu cargo, debes cumplir con estas obligaciones:</p>
+      <ul>
+        <li><strong>Firmar y revisar</strong> tu resguardo individual de bienes.</li>
+        <li><strong>Reportar oportunamente</strong> cualquier cambio físico de bienes y solicitar la actualización de su resguardo.</li>
+        <li><strong>Informar</strong> si las etiquetas patrimoniales están dañadas o faltan.</li>
+        <li><strong>Poner a la vista</strong> los bienes durante el inventario físico.</li>
+        <li><strong>No dejar bienes del gobierno</strong> en autos (públicos o privados).</li>
+        <li><strong>Colaborar</strong> si ocurre un siniestro y ayudar a documentar lo sucedido.</li>
+        <li><strong>Pagar el deducible</strong> si se determina negligencia (en 10 días).</li>
+      </ul>
+      <div class="obligation-strong">
+        ⚠️ <strong>IMPORTANTE:</strong> Los resguardantes de los bienes tienen la obligación de reportar oportunamente a su área Administrativa, cualquier cambio físico de bienes y solicitar la actualización de su resguardo. ¡No esperes! Mantener tu resguardo actualizado protege tanto al patrimonio del Estado como tu responsabilidad personal.
+      </div>
+      <p><strong>⚠️ Advertencia:</strong> El incumplimiento puede derivar en la reposición del bien o acciones administrativas.</p>
+    </div>
+
+    <p class="note">
+      Estas políticas entraron en vigor el 4 de abril de 2025. Emitidas por la Licda. Elvia Guadalupe Gutiérrez Pérez, 
+      Directora General Administrativa de la Secretaría de Finanzas del Estado de Guanajuato.
+    </p>
+
+    <div class="source-credit">
+      Esta infografía fue elaborada a partir del documento oficial “Políticas Internas de la Unidad de Inventarios”, emitido el 3 de abril de 2025 por la Unidad de Inventarios de la Secretaría de Finanzas.<br>
+      El diseño gráfico y la integración visual son del Copyright: IVR/igm.
+    </div>
+
+    <footer>
+      Secretaría de Finanzas - Subsecretaría de Administración - Dirección General Administrativa<br>
+      Unidad de Inventarios | Guanajuato, Gto.<br>
+      Copyright IVR/igm
+    </footer>
+  </div>
+
+  <script>
+    function openTab(evt, tabName) {
+      const tabs = document.querySelectorAll(".tab");
+      const contents = document.querySelectorAll(".tab-content");
+
+      tabs.forEach(tab => tab.classList.remove("active"));
+      contents.forEach(content => content.classList.remove("active"));
+
+      evt.currentTarget.classList.add("active");
+      document.getElementById(tabName).classList.add("active");
+    }
+  </script>
+</body>
+</html>
